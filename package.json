@@ -1,0 +1,32 @@
+{
+  "name": "designaroni-strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "local": "yarn develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@strapi/plugin-graphql": "4.1.7",
+    "@strapi/plugin-i18n": "4.1.7",
+    "@strapi/plugin-users-permissions": "4.1.7",
+    "@strapi/strapi": "4.1.7",
+    "better-sqlite3": "7.4.6"
+  },
+  "author": {
+    "name": "Ian Roberts"
+  },
+  "strapi": {
+    "uuid": "f0330bc2-298b-4e30-93bd-5b673f2f79fa"
+  },
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
