@@ -4,23 +4,24 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Category"
+    "displayName": "Category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "category": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "restaurants": {
+    "posts": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "categories"
+      "target": "api::post.post",
+      "mappedBy": "categories"
     }
   }
 }

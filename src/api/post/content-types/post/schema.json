@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bodyCopy": {
+      "type": "richtext",
+      "required": true
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "posts"
+    },
+    "top_level_page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::top-level-page.top-level-page",
+      "inversedBy": "posts"
+    },
+    "pageMetaData": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-meta-data.page-meta-data"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "posts"
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true,
+      "maxLength": 175,
+      "minLength": 20,
+      "unique": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

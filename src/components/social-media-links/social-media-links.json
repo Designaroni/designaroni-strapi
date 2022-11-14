@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_social_media_links_social_media_links",
+  "info": {
+    "displayName": "Social Media Links",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Instagram": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "default": "https://www.instagram.com/designaroni/"
+    },
+    "Youtube": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "default": "https://www.youtube.com/channel/UCIH77UTZorw-xSK7h8mZfug"
+    },
+    "TikTok": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "default": "https://www.tiktok.com/@designaroni"
+    },
+    "LinkedIn": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "default": "https://www.linkedin.com/in/ian-roberts-designaroni/"
+    },
+    "Github": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "default": "https://github.com/Designaroni"
+    }
+  }
+}

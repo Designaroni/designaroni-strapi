@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "top_level_pages",
+  "info": {
+    "singularName": "top-level-page",
+    "pluralName": "top-level-pages",
+    "displayName": "Top Level Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "pageMetaData": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-meta-data.page-meta-data"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "top_level_page"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "shortDescription": {
+      "type": "text",
+      "maxLength": 175,
+      "minLength": 20,
+      "required": true,
+      "unique": true
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authors",
+  "info": {
+    "singularName": "author",
+    "pluralName": "authors",
+    "displayName": "Author",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "default": "Ian Roberts"
+    },
+    "profileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bio": {
+      "type": "richtext",
+      "default": "Hey! 👋 I'm Ian Roberts – a Senior Front End Developer, hobby mechanic, travel & adventure nerd. Making the foothills of the Wasatch Mountains my home I live & work out of a Four Wheel Campers Project M. Find more about me, the technology of this site & where to find me on the internet on the [About](/About) page.<br></br>💭 Forever Curious<br></br>♾️Practicing engaged buddhism, deep ecology<br></br>🌎 Cache Valley, UT<br></br>🛻🏕️🥾👨‍🔧🏂⛷️",
+      "required": true
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "author"
+    }
+  }
+}

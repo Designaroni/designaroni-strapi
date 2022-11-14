@@ -8,15 +8,16 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "upgradeStrapi": "yarn upgrade @strapi/strapi@latest && yarn upgrade @strapi/plugin-users-permissions@latest && yarn upgrade @strapi/plugin-i18n@latest && yarn upgrade @strapi/plugin-graphql@latest"
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.1.8",
-    "@strapi/plugin-i18n": "^4.1.8",
-    "@strapi/plugin-users-permissions": "^4.1.8",
-    "@strapi/strapi": "^4.1.8",
-    "better-sqlite3": "7.4.6",
+    "@strapi/plugin-graphql": "^4.3.3",
+    "@strapi/plugin-i18n": "^4.3.3",
+    "@strapi/plugin-users-permissions": "^4.3.3",
+    "@strapi/strapi": "^4.3.3",
+    "better-sqlite3": "7.6.2",
     "pg": "^8.7.3"
   },
   "author": {
