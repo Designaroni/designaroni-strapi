@@ -1,5 +1,41 @@
 # 🚀 Getting started with Strapi
 
+### `Environment variables`
+
+Copy .env.example to .env
+
+```
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=['', '']
+JWT_SECRET=
+API_TOKEN_SALT=
+ADMIN_JWT_SECRET=
+```
+
+Generate `APP_KEYS`, `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` by running Node in the terminal and using `crypto.randomBytes(16).toString('base64')`.
+
+- `APP_KEYS` must be an array defined like `APP_KEYS=['asdf1234==', 'qwer5678==']`
+- `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` can be left as `ENV_VAR=asdf1234==` without the array or string characters
+
+---
+
+# Custom `yarn` commands for this project
+
+### `local`
+
+Same command as `develop` used for local development to start and run the Strapi application. Used in parity with the local development command used to start [designaroni-next](https://github.com/designaroni/designaroni-next)
+
+### `strapi`
+
+Provides access to the Strapi CLI, @see: https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html
+
+### `updateStrapi`
+
+Runs several `yarn upgrade` commands, used for updating all required Strapi NPM modules.
+
+# Default Strapi `yarn` commands for this project
+
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
 ### `develop`
