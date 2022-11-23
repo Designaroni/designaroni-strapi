@@ -1,18 +1,37 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = ({ env }) => {
-  if (env('NODE_ENV') === 'production') {
+  if (env("NODE_ENV") === "production") {
     return {
       connection: {
-        client: 'postgres',
+        client: "postgres",
         connection: {
-          host: env('DATABASE_HOST', '127.0.0.1'),
-          port: env.int('DATABASE_PORT', 5432),
-          database: env('DATABASE_NAME', 'strapi'),
-          user: env('DATABASE_USERNAME', 'strapi'),
-          password: env('DATABASE_PASSWORD', 'strapi'),
+          host: env("DATABASE_HOST", "127.0.0.1"),
+          port: env.int("DATABASE_PORT", 5432),
+          database: env("DATABASE_NAME", "strapi"),
+          user: env("DATABASE_USERNAME", "strapi"),
+          password: env("DATABASE_PASSWORD", "strapi"),
           ssl: {
-            ca: env('DATABASE_CA'),
+            ca: env("DATABASE_CA"),
+          },
+        },
+        debug: false,
+      },
+    };
+  }
+
+  if (env("NODE_ENV") === "test") {
+    return {
+      connection: {
+        client: "postgres",
+        connection: {
+          host: env("DATABASE_HOST", "127.0.0.1"),
+          port: env.int("DATABASE_PORT", 5432),
+          database: env("DATABASE_NAME", "strapi"),
+          user: env("DATABASE_USERNAME", "strapi"),
+          password: env("DATABASE_PASSWORD", "strapi"),
+          ssl: {
+            ca: env("DATABASE_CA"),
           },
         },
         debug: false,
@@ -22,11 +41,15 @@ module.exports = ({ env }) => {
 
   return {
     connection: {
-      client: 'sqlite',
+      client: "sqlite",
       connection: {
-        filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+        filename: path.join(
+          __dirname,
+          "..",
+          env("DATABASE_FILENAME", ".tmp/data.db")
+        ),
       },
       useNullAsDefault: true,
-    }
-  }  
+    },
+  };
 };

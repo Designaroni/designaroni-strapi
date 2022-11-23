@@ -1,3 +1,22 @@
+# Pre-getting started
+
+If this is your first time running the repo locally you may need to install python version 3x in order to successfully run `yarn` which will break when installing better-sqlite3 without the right version of python:
+
+- install [Homebrew](https://brew.sh/): `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+  - follow the instructions printed in the terminal to add brew to your path
+- install pyenv: `$ brew install pyenv`
+  - further details on pyenv installation can be found here on Stackoverflow: https://stackoverflow.com/a/71957847/13986111
+  - check the latest python versions here: https://www.python.org/downloads/macos/
+- add pyenv shims to your path
+  - ```
+    #### adds python
+    export PATH="$HOME/.pyenv/shims:$PATH"
+    ```
+- install the latest stable version of python and set it as your global python
+  - `$ pyenv install 3.11.0`
+  - `$ pyenv global 3.11.0`
+  - test which version is installed by running `pyenv version`
+
 # 🚀 Getting started with Strapi
 
 ### `Environment variables`
@@ -19,6 +38,25 @@ Generate `APP_KEYS`, `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` by runni
 - `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` can be left as `ENV_VAR=asdf1234==` without the array or string characters
 
 ---
+
+### Adding the admin and content
+
+This Strapi repo is designed to work with the [designaroni-next](https://github.com/designaroni/designaroni-next) frontend, in order to run the frontend app you will need to create a Strapi Admin, and then add content and ensure it is published.
+
+- start up the app using `yarn local`
+- Create your first administrator here: http://localhost:1337/admin
+- Required content types to be published:
+  - [Author](http://localhost:1337/admin/content-manager/collectionType/api::author.author?page=1&pageSize=10&sort=name:ASC)
+    - Author will be asigned to posts later
+  - [Category](http://localhost:1337/admin/content-manager/collectionType/api::author.author?page=1&pageSize=10&sort=name:ASC)
+    - multple categories should be created these will be asigned to posts later
+  - [Footer](https://api-test.designaroni.com/admin/content-manager/collectionType/api::footer.footer?page=1&pageSize=10&sort=daysRemaining:ASC)
+    - One footer type should be created
+  - [TopLevelPage](https://api-test.designaroni.com/admin/content-manager/collectionType/api::top-level-page.top-level-page?page=1&pageSize=10&sort=name:ASC)
+    - example top level pages: `Trips, Journal, Builds, About, Work`
+  - [Post](https://api-test.designaroni.com/admin/content-manager/collectionType/api::post.post?page=1&pageSize=10&sort=title:ASC)
+    - multple posts should be created, each post should be assigned to category(s), an author, and a top level page
+  - [Home](https://api-test.designaroni.com/admin/content-manager/singleType/api::home.home)
 
 # Custom `yarn` commands for this project
 
