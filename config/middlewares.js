@@ -1,12 +1,94 @@
-module.exports = [
-  'strapi::errors',
-  'strapi::security',
-  'strapi::cors',
-  'strapi::poweredBy',
-  'strapi::logger',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
-];
+module.exports = ({ env }) => {
+  if (env("NODE_ENV") === "production") {
+    return [
+      "strapi::errors",
+      {
+        name: "strapi::security",
+        config: {
+          contentSecurityPolicy: {
+            useDefaults: true,
+            directives: {
+              "connect-src": ["'self'", "https:"],
+              "img-src": [
+                "'self'",
+                "data:",
+                "blob:",
+                "dl.airtable.com",
+                `${env("AWS_BUCKET")}.s3.${env("AWS_REGION")}.amazonaws.com`,
+              ],
+              "media-src": [
+                "'self'",
+                "data:",
+                "blob:",
+                "dl.airtable.com",
+                `${env("AWS_BUCKET")}.s3.${env("AWS_REGION")}.amazonaws.com`,
+              ],
+              upgradeInsecureRequests: null,
+            },
+          },
+        },
+      },
+      "strapi::cors",
+      "strapi::poweredBy",
+      "strapi::logger",
+      "strapi::query",
+      "strapi::body",
+      "strapi::session",
+      "strapi::favicon",
+      "strapi::public",
+    ];
+  }
+
+  if (env("NODE_ENV") === "test") {
+    return [
+      "strapi::errors",
+      {
+        name: "strapi::security",
+        config: {
+          contentSecurityPolicy: {
+            useDefaults: true,
+            directives: {
+              "connect-src": ["'self'", "https:"],
+              "img-src": [
+                "'self'",
+                "data:",
+                "blob:",
+                "dl.airtable.com",
+                `${env("AWS_BUCKET")}.s3.${env("AWS_REGION")}.amazonaws.com`,
+              ],
+              "media-src": [
+                "'self'",
+                "data:",
+                "blob:",
+                "dl.airtable.com",
+                `${env("AWS_BUCKET")}.s3.${env("AWS_REGION")}.amazonaws.com`,
+              ],
+              upgradeInsecureRequests: null,
+            },
+          },
+        },
+      },
+      "strapi::cors",
+      "strapi::poweredBy",
+      "strapi::logger",
+      "strapi::query",
+      "strapi::body",
+      "strapi::session",
+      "strapi::favicon",
+      "strapi::public",
+    ];
+  }
+
+  return [
+    "strapi::errors",
+    "strapi::security",
+    "strapi::cors",
+    "strapi::poweredBy",
+    "strapi::logger",
+    "strapi::query",
+    "strapi::body",
+    "strapi::session",
+    "strapi::favicon",
+    "strapi::public",
+  ];
+};
