@@ -37,6 +37,47 @@ Generate `APP_KEYS`, `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` by runni
 - `APP_KEYS` must be an array defined like `APP_KEYS=['asdf1234==', 'qwer5678==']`
 - `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` can be left as `ENV_VAR=asdf1234==` without the array or string characters
 
+#### `Test` & `Production` environment specifics
+
+- If you are deploying `test` or `production` environments of this apps configurations to **Digital Ocean Apps** you will need to configure additional environment variables. See: [Deploy Strapi to Digital Ocean App](https://www.youtube.com/watch?v=tnGqqUzzh6U)
+
+**Dealing with persitent images**
+
+- In order to maintain persistent images this project is configured to use AWS S3 for hosting images in `test` and `production` node environments. Without a solution for hosting persistent images `test` and `production` environments will upload media assets “locally” to your servers `public/uploads` directory which wiped during each redeploy. To use AWS for both `test` and `production` environments you will need to separately configure AWS S3 buckets and IAM policies for the AWS environment variables which are `AWS_ACCESS_KEY_ID`,`AWS_ACCESS_SECRET`,`AWS_REGION`,`AWS_BUCKET`. The values for these environment variables relate to your AWS S3 buckets and IAM permissions defined for the apps use.
+  - Basic steps to create IAM users & roles can be found here: [Amazon AWS Install Requirements and creating an IAM non-root user](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment/hosting-guides/amazon-aws.html#amazon-aws-install-requirements-and-creating-an-iam-non-root-user)
+    - These steps can be followed to create an account administrator, developer user, application environment specific users and user groups.
+    - The application environment specific user (like `website.strapi.production.user`) will be used to generate the `AWS_ACCESS_KEY_ID`, `AWS_ACCESS_SECRET` needed in the applications environment variables.
+    - Ideally you should attempt to use the AWS concept of assumed roles to grant your application access to your S3 buckets but that's a whole seperate process...
+    - IAM policies can be configured for the application specific users with the minimal configuration of:
+      - ```
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "VisualEditor0",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:PutObject",
+                        "s3:GetObject",
+                        "s3:ListBucket",
+                        "s3:DeleteObject",
+                        "s3:PutObjectAcl"
+                    ],
+                    "Resource": [
+                        "arn:aws:s3:::<strapi-uploads-bucket-name>",
+                        "arn:aws:s3:::<strapi-uploads-bucket-name>/*"
+                    ]
+                }
+            ]
+        }
+        ```
+  - Basic steps to setup AWS per enviroment can be found here: [ Configure S3 for image hosting](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment/hosting-guides/amazon-aws.html#configure-s3-for-image-hosting)
+    - create an AWS S3 bucket for uploads, something like `websiteName-strapi-production-uploads`
+    - follow the bucket settings listed in the guide
+    - An additional step may be needed to allow your apps IAM user to upload by navigating to the bucket `Permissions` tab and changing `Object Ownership` to `Bucket owner preferred`
+
+Additional resources on deploying Strapi to other environments can be found here:
+
 ---
 
 ### Adding the admin and content
