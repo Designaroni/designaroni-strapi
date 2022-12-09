@@ -58,6 +58,23 @@ This Strapi repo is designed to work with the [designaroni-next](https://github.
     - multple posts should be created, each post should be assigned to category(s), an author, and a top level page
   - [Home](https://api-test.designaroni.com/admin/content-manager/singleType/api::home.home)
 
+### Graphql API role configuration
+
+In order to use the Graphql API you will need to configure the apps roles & permissions.
+
+- Navigate to `Settings`
+- Select `Roles` under _User & Permissions Plugin_
+- Select the edit icon for the `Public` permissions
+- Under the Public page _permissions_ section select the `find` checkbox for the following items:
+  - Author
+  - Category
+  - Footer
+  - Home
+  - Post (Also select the `findOne` checkbox)
+  - Top-level-page
+- Select save to enable your localhost graphql API
+- check that the API is enabled and working by navigating to http://localhost:1337/graphql and running a query as described in the `designaroni-next` `lib/api.ts` file.
+
 # Custom `yarn` commands for this project
 
 ### `local`
