@@ -84,7 +84,7 @@ Additional resources on deploying Strapi to other environments can be found here
 
 ---
 
-## Adding the admin and content
+# Adding the admin and content
 
 This Strapi repo is designed to work with the [designaroni-next](https://github.com/designaroni/designaroni-next) frontend, in order to run the frontend app you will need to create a Strapi Admin user, and then add content and ensure it is published.
 
@@ -105,7 +105,7 @@ This Strapi repo is designed to work with the [designaroni-next](https://github.
 
 ---
 
-## Graphql API role configuration
+# Graphql API role configuration
 
 In order to use the Graphql API you will need to configure the apps roles & permissions.
 
