@@ -17,33 +17,35 @@ If this is your first time running the repo locally you may need to install pyth
   - `$ pyenv global 3.11.0`
   - test which version is installed by running `pyenv version`
 
-# 🚀 Getting started with Strapi
+# Environment variables
 
-### `Environment variables`
+## Environment bariables required for local development
 
-Copy .env.example to .env
+- Copy `.env.example` to `.env` and add the following:
+  - ```
+    HOST=0.0.0.0
+    PORT=1337
+    APP_KEYS=['', '']
+    JWT_SECRET=
+    API_TOKEN_SALT=
+    ADMIN_JWT_SECRET=
+    ```
+- Generate `APP_KEYS`, `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` by running Node in the terminal using `crypto.randomBytes(16).toString('base64')`.
+  - `APP_KEYS` must be an array defined like `APP_KEYS=['asdf1234==', 'qwer5678==']`
+  - `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` can be left as a string ex: `ENV_VAR=asdf1234==` without the array or string notation characters
 
-```
-HOST=0.0.0.0
-PORT=1337
-APP_KEYS=['', '']
-JWT_SECRET=
-API_TOKEN_SALT=
-ADMIN_JWT_SECRET=
-```
+---
 
-Generate `APP_KEYS`, `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` by running Node in the terminal and using `crypto.randomBytes(16).toString('base64')`.
-
-- `APP_KEYS` must be an array defined like `APP_KEYS=['asdf1234==', 'qwer5678==']`
-- `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` can be left as `ENV_VAR=asdf1234==` without the array or string characters
-
-#### `Test` & `Production` environment specifics
+## `Test` & `Production` environment specifics
 
 - If you are deploying `test` or `production` environments of this apps configurations to **Digital Ocean Apps** you will need to configure additional environment variables. See: [Deploy Strapi to Digital Ocean App](https://www.youtube.com/watch?v=tnGqqUzzh6U)
 
-**Dealing with persitent images**
+### **Dealing with persitent images**
 
-- In order to maintain persistent images this project is configured to use AWS S3 for hosting images in `test` and `production` node environments. Without a solution for hosting persistent images `test` and `production` environments will upload media assets “locally” to your servers `public/uploads` directory which wiped during each redeploy. To use AWS for both `test` and `production` environments you will need to separately configure AWS S3 buckets and IAM policies for the AWS environment variables which are `AWS_ACCESS_KEY_ID`,`AWS_ACCESS_SECRET`,`AWS_REGION`,`AWS_BUCKET`. The values for these environment variables relate to your AWS S3 buckets and IAM permissions defined for the apps use.
+Without a solution for hosting persistent images `test` and `production` environments will upload media assets “locally” to your servers `public/uploads` directory which wiped during each redeploy.
+
+- In order to maintain persistent images `config/plugins.js` & `config/middlewars.js` have been configured to use AWS S3 environment variables when the app is in `test` and `production` node environments.
+- To use AWS for both `test` and `production` environments you will need to configure two different AWS S3 buckets, AWS users with IAM policies to generate the required AWS environment variables for `AWS_ACCESS_KEY_ID`,`AWS_ACCESS_SECRET`,`AWS_REGION`,`AWS_BUCKET`.
   - Basic steps to create IAM users & roles can be found here: [Amazon AWS Install Requirements and creating an IAM non-root user](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment/hosting-guides/amazon-aws.html#amazon-aws-install-requirements-and-creating-an-iam-non-root-user)
     - These steps can be followed to create an account administrator, developer user, application environment specific users and user groups.
     - The application environment specific user (like `website.strapi.production.user`) will be used to generate the `AWS_ACCESS_KEY_ID`, `AWS_ACCESS_SECRET` needed in the applications environment variables.
@@ -72,17 +74,19 @@ Generate `APP_KEYS`, `JWT_SECRET`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET` by runni
         }
         ```
   - Basic steps to setup AWS per enviroment can be found here: [ Configure S3 for image hosting](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment/hosting-guides/amazon-aws.html#configure-s3-for-image-hosting)
-    - create an AWS S3 bucket for uploads, something like `websiteName-strapi-production-uploads`
+    - The buckets you create for `test` & `production environments` will be used to generate the `AWS_REGION` & `AWS_BUCKET` needed in the applications environment variables.
+    - create an AWS S3 bucket for uploads, something like `websiteName-strapi-production-uploads`.
     - follow the bucket settings listed in the guide
     - An additional step may be needed to allow your apps IAM user to upload by navigating to the bucket `Permissions` tab and changing `Object Ownership` to `Bucket owner preferred`
+    - Repeat this process for your test environment uploads bucket.
 
-Additional resources on deploying Strapi to other environments can be found here:
+Additional resources on deploying Strapi to other environments can be found here: [Deployment - Strapi Developer Docs](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html)
 
 ---
 
-### Adding the admin and content
+## Adding the admin and content
 
-This Strapi repo is designed to work with the [designaroni-next](https://github.com/designaroni/designaroni-next) frontend, in order to run the frontend app you will need to create a Strapi Admin, and then add content and ensure it is published.
+This Strapi repo is designed to work with the [designaroni-next](https://github.com/designaroni/designaroni-next) frontend, in order to run the frontend app you will need to create a Strapi Admin user, and then add content and ensure it is published.
 
 - start up the app using `yarn local`
 - Create your first administrator here: http://localhost:1337/admin
@@ -99,7 +103,9 @@ This Strapi repo is designed to work with the [designaroni-next](https://github.
     - multple posts should be created, each post should be assigned to category(s), an author, and a top level page
   - [Home](https://api-test.designaroni.com/admin/content-manager/singleType/api::home.home)
 
-### Graphql API role configuration
+---
+
+## Graphql API role configuration
 
 In order to use the Graphql API you will need to configure the apps roles & permissions.
 
@@ -115,6 +121,8 @@ In order to use the Graphql API you will need to configure the apps roles & perm
   - Top-level-page
 - Select save to enable your localhost graphql API
 - check that the API is enabled and working by navigating to http://localhost:1337/graphql and running a query as described in the `designaroni-next` `lib/api.ts` file.
+
+---
 
 # Custom `yarn` commands for this project
 
@@ -163,6 +171,8 @@ npm run build
 # or
 yarn build
 ```
+
+# 🚀 Getting started with Strapi
 
 ## ⚙️ Deployment
 
