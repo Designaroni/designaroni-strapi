@@ -19,7 +19,8 @@
     "@strapi/provider-upload-aws-s3": "^4.5.3",
     "@strapi/strapi": "^4.3.3",
     "better-sqlite3": "7.6.2",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "strapi-plugin-vercel-deploy": "^1.4.0"
   },
   "author": {
     "name": "Ian Roberts"
