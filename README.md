@@ -19,7 +19,7 @@ If this is your first time running the repo locally you may need to install pyth
 
 # Environment variables
 
-## Environment bariables required for local development
+## Environment variables required for local development
 
 - Copy `.env.example` to `.env` and add the following:
   - ```
@@ -79,6 +79,23 @@ Without a solution for hosting persistent images `test` and `production` environ
     - follow the bucket settings listed in the guide
     - An additional step may be needed to allow your apps IAM user to upload by navigating to the bucket `Permissions` tab and changing `Object Ownership` to `Bucket owner preferred`
     - Repeat this process for your test environment uploads bucket.
+
+### **Setting up Strapi Vercel Deploy plugin**
+
+This project uses the Vercel Deploy plugin to manage redeploys of the frontend NextJs app when content changes have been made in the Strapi backend that don’t require frontend code changes. Configuration details for that plugin can be found here:
+
+- [Vercel Deploy | Strapi Market](https://market.strapi.io/plugins/strapi-plugin-vercel-deploy)
+- [npm: strapi-plugin-vercel-deploy](https://www.npmjs.com/package/strapi-plugin-vercel-deploy)
+- [Github - gianlucaparadise/strapi-plugin-vercel-deploy: Strapi v4 plugin to trigger and monitor a deployment on Vercel](https://github.com/gianlucaparadise/strapi-plugin-vercel-deploy)
+
+The plugin itself requires the uses of 4 new environment variables `VERCEL_DEPLOY_PLUGIN_HOOK`, `VERCEL_DEPLOY_PLUGIN_API_TOKEN`, `VERCEL_DEPLOY_PLUGIN_APP_FILTER`, `VERCEL_DEPLOY_PLUGIN_ROLES`
+
+- `VERCEL_DEPLOY_PLUGIN_HOOK` can be configured in a Vercel projects `settings` tab
+- `VERCEL_DEPLOY_PLUGIN_API_TOKEN` can be configured here: [Tokens – Account – Dashboard – Vercel](https://vercel.com/account/tokens). Tokens should be assigned to specific git branches like `master` or `test`.
+- `VERCEL_DEPLOY_PLUGIN_APP_FILTER` is equal to your app name ex: websiteName-next
+- `VERCEL_DEPLOY_PLUGIN_ROLES` is configured in `config/plugins.js` to consume only one Strapi role, currently this value should default to `strapi-super-admin`. `config/plugins.js` can be modified to consume an array of strings if more than one role will be expected to be able to use the Vercel Deploy plugin.
+
+### **Additional Resources**
 
 Additional resources on deploying Strapi to other environments can be found here: [Deployment - Strapi Developer Docs](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html)
 
