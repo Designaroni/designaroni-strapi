@@ -1,3 +1,13 @@
+[![Strapi](https://badgen.net/badge/Strapi/v.4.3.3/blue)](https://strapi.io/)
+[![GraphQL](https://badgen.net/badge/icon/graphql?icon=graphql&label)](https://graphql.org/)
+[![Postgresql](https://badgen.net/badge/icon/postgresql?icon=postgresql&label)](https://www.postgresql.org/)[![Digital Ocean](https://badgen.net/badge/DO/Digital%20Ocean)](https://digitalocean.com)[![AWS](https://badgen.net/badge/AWS/Amazon%20Web%20Services)](https://aws.amazon.com/)[![Jira](https://badgen.net/badge/icon/jira?icon=jira&label)](https://designaroni.atlassian.net/jira/software/projects/DN/boards/1)[![Designaroni Strapi Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/designaroni/designaroni-strapi)[![Dependabot](https://badgen.net/badge/icon/dependabot?icon=dependabot&label)](https://github.com/Designaroni/designaroni-strapi/security/dependabot)[![Git SCM](https://badgen.net/badge/icon/git?icon=git&label)](https://git-scm.com/)![Terminal](https://badgen.net/badge/icon/terminal?icon=terminal&label)![MIT License](https://badgen.net/badge/license/MIT/blue)
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-orange.svg)](https://sonarcloud.io/summary/new_code?id=Designaroni_designaroni-next)
+
+<!-- https://badgen.net/badge/icon/npm?icon=npm&label -->
+
+---
+
 # Pre-getting started
 
 If this is your first time running the repo locally you may need to install python version 3x in order to successfully run `yarn` which will break when installing better-sqlite3 without the right version of python:
