@@ -8,10 +8,10 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
+    "commit": "git-cz",
     "strapi": "strapi",
     "upgradeStrapi": "yarn upgrade @strapi/strapi@latest && yarn upgrade @strapi/plugin-users-permissions@latest && yarn upgrade @strapi/plugin-i18n@latest && yarn upgrade @strapi/plugin-graphql@latest"
   },
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-graphql": "^4.3.3",
     "@strapi/plugin-i18n": "^4.3.3",
@@ -21,6 +21,13 @@
     "better-sqlite3": "7.6.2",
     "pg": "^8.7.3",
     "strapi-plugin-vercel-deploy": "^1.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@commitlint/cz-commitlint": "^17.3.0",
+    "commitizen": "^4.2.6",
+    "husky": "^8.0.2"
   },
   "author": {
     "name": "Ian Roberts"
