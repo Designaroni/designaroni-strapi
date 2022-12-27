@@ -5,7 +5,6 @@
 [//]: # 'Replace "JIRA-ISSUE" in the link below with the Jira Task ex: DN-000'
 
 [JIRA ticket](https://designaroni.atlassian.net/browse/JIRA-ISSUE)
-
 [//]: # "What changes are made in the pull request? minor, major & chore or cleanup tasks..."
 
 ## Documentation
@@ -18,7 +17,7 @@
 
 ## How to recreate & verify
 
-[//]: # "Nuerotically list steps needed to recreate the issue. Seperately list steps to verify the fix or verify that all require changes satisfy the ticket requirements."
+[//]: # "Neurotically list steps needed to recreate the issue. Separately list steps to verify the fix or verify that all require changes satisfy the ticket requirements."
 
 **Steps to recreate:**
 
