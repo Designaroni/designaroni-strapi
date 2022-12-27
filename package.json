@@ -1,8 +1,16 @@
 {
   "name": "designaroni-strapi",
-  "private": true,
+  "description": "A Strapi Headless CMS Application",
+  "author": {
+    "name": "Ian Roberts"
+  },
+  "license": "MIT",
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/designaroni/designaroni-strapi.git"
+  },
+  "private": false,
   "scripts": {
     "local": "yarn develop",
     "develop": "strapi develop",
@@ -27,10 +35,8 @@
     "@commitlint/config-conventional": "^17.3.0",
     "@commitlint/cz-commitlint": "^17.3.0",
     "commitizen": "^4.2.6",
-    "husky": "^8.0.2"
-  },
-  "author": {
-    "name": "Ian Roberts"
+    "husky": "^8.0.2",
+    "semantic-release": "^19.0.5"
   },
   "strapi": {
     "uuid": "f0330bc2-298b-4e30-93bd-5b673f2f79fa"
@@ -38,6 +44,5 @@
   "engines": {
     "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+  }
 }
