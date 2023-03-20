@@ -2616,12 +2616,12 @@
     "@strapi/utils" "4.4.5"
     sendmail "^1.6.1"
 
-"@strapi/provider-upload-aws-s3@^4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@strapi/provider-upload-aws-s3/-/provider-upload-aws-s3-4.5.3.tgz#99022849eef871e4f8f754199e39aa9cd9c136ed"
-  integrity sha512-81NHEdGL68go5QTmrQSFxaPNIpmB80B7ciavOXDKc74GW5a84ziR3bnomN/ljL0WFL0cGXx9QTgII90igZ5ijg==
+"@strapi/provider-upload-aws-s3@^4.8.2":
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-upload-aws-s3/-/provider-upload-aws-s3-4.8.2.tgz#f9e3f7dff1b2b34cccd80d45b0ca5d22a8ce2606"
+  integrity sha512-5o+510u081A9ffCukoAqalfkHBEhLLfICVX4bzlZhmvaAL5bTiv3DdLKZdxifeza7eLwhZhg1BmnTowJ266HIg==
   dependencies:
-    aws-sdk "2.1260.0"
+    aws-sdk "2.1287.0"
     lodash "4.17.21"
 
 "@strapi/provider-upload-local@4.4.5":
@@ -3802,10 +3802,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-aws-sdk@2.1260.0:
-  version "2.1260.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1260.0.tgz#3dc18f49dd4aaa18e4e9787c62f1ad02e5aaac4c"
-  integrity sha512-iciXVukPbhmh44xcF+5/CO15jtESqRkXuEH54XaU8IpCzbYkAcPBaS29vLRN2SRuN1Dy2S3X7SaZZxFJWLAHrg==
+aws-sdk@2.1287.0:
+  version "2.1287.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1287.0.tgz#40296aadf34e7550e058f73f3363130d65ffb1c0"
+  integrity sha512-mtfDstUdFNn8FnBaXs2KAaQ0cgDIiwlqwC2UptUKWWrugjZHAoRacfD/6bnah1Kwhu43F9CDEe5QLHnQtymNkw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
